@@ -1,15 +1,20 @@
 import { Text, View } from "react-native";
+import { Canvas, Mask, Group, Circle, Rect } from "@shopify/react-native-skia";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <Canvas style={{ width: 256, height: 256 }}>
+      <Mask
+        mode="luminance"
+        mask={
+          <Group>
+            <Circle cx={128} cy={128} r={128} color="white" />
+            <Circle cx={128} cy={128} r={64} color="black" />
+          </Group>
+        }
+      >
+        <Rect x={0} y={0} width={256} height={256} color="lightblue" />
+      </Mask>
+    </Canvas>
   );
 }
