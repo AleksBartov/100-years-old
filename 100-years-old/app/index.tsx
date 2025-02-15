@@ -1,7 +1,19 @@
-import { Text, View } from "react-native";
-import { Canvas, Mask, Group, Circle, Rect } from "@shopify/react-native-skia";
+import {
+  Canvas,
+  Mask,
+  Group,
+  Circle,
+  Rect,
+  useFont,
+  Text,
+} from "@shopify/react-native-skia";
 
 export default function Index() {
+  const fontSize = 32;
+  const font = useFont(
+    require("./../assets/fonts/PonomarUnicode.otf"),
+    fontSize
+  );
   return (
     <Canvas style={{ width: 256, height: 256 }}>
       <Mask
@@ -15,6 +27,7 @@ export default function Index() {
       >
         <Rect x={0} y={0} width={256} height={256} color="lightblue" />
       </Mask>
+      <Text x={0} y={fontSize} text="Hello World" font={font} />
     </Canvas>
   );
 }
